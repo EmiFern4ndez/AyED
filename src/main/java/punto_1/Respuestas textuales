@@ -1,0 +1,1 @@
+1.4) Enfoque de uso (Interfaz común): en lo que respecta a las implementaciones, no hay ninguna diferencia ya que tenemos el beneficio del polimorfismo. Lo que si cambia es en el tema de optimizacion de espacio
