@@ -1,1 +1,35 @@
 1.4) Enfoque de uso (Interfaz común): en lo que respecta a las implementaciones, no hay ninguna diferencia ya que tenemos el beneficio del polimorfismo. Lo que si cambia es en el tema de optimizacion de espacio
+
+1.6)
+a)-Métodos reutilizables: Sí, se podrían implementar en la superclase métodos como agregarInicio(elem) (llamando a agregarEn(elem, 0)), agregarFinal(elem) (llamando a agregarEn(elem, tamanio())), esVacia() (tamanio() == 0) e incluye(elem).
+-Uso de abstract: La superclase representa el tipo abstracto de lista sin definir una estructura en memoria. Como la manipulación de datos cambia según el medio utilizado (arreglo contiguo vs. nodos enlazados), no se puede instanciar directamente (new ListaDeEnteros()).
+b)La diferencia principal radica en qué punteros o enlaces se deben actualizar y si es necesario realizar un recorrido previo:
+-Agregar al principio (posición 0):Sin recorrido: No hace falta iterar para encontrar un nodo previo (costo $\mathcal{O}(1)$).Enlaces: Se apunta el siguiente del nuevo nodo al inicio actual, y se actualiza el puntero inicio para que apunte al nuevo nodo. Si la lista estaba vacía, también se actualiza fin hacia el nuevo nodo.
+-Agregar en el medio (posición $0 < pos < tamanio$):Requiere recorrido: Hay que iterar nodo por nodo desde inicio hasta la posición $pos - 1$ para obtener la referencia del nodo anterior (aux) (costo $\mathcal{O}(n)$).  Enlaces: Se reenganchar los enlaces de tres nodos:nuevo.setSiguiente(aux.getSiguiente());  aux.setSiguiente(nuevo); Los punteros principales inicio y fin no sufren modificaciones.
+-Agregar al final (posición $pos = tamanio$):Aprovechamiento del puntero fin: Como la clase cuenta con una referencia directa al último nodo (fin), no se requiere recorrer toda la lista.  Enlaces: El puntero siguiente del antiguo último nodo (fin) se enlaza al nuevo nodo, y luego se actualiza la referencia fin para que pase a apuntar al nuevo nodo (fin = nuevo).
+c)Yo creo que es depende la implementacion.
+
+2.1) Si se podria hacer tranquilamente utilizando las listas enlazadas genericas.
+
+2.4)
+a)Acoplamiento de tipos: ListaDeEnterosEnlazada está limitada a almacenar únicamente objetos de tipo Integer. En cambio, ListaEnlazadaGenerica<T> utiliza un parámetro de tipo $T$, permitiendo manipular cualquier tipo de objeto (Estudiante, String, etc.) garantizando la seguridad de tipos (type safety) en compilación.
+b)Definición: Se define agregando el parámetro <T> en la cabecera de la clase y usando $T$ como el tipo del dato almacenado:
+public class NodoGenerico<T> {
+    private T dato;
+    private NodoGenerico<T> siguiente;
+    // getters y setters
+}
+Instanciación: Se crea especificando el tipo concreto o mediante el operador diamond (<>):
+NodoGenerico<String> nodo = new NodoGenerico<String>();
+// o utilizando inferencia de tipos:
+NodoGenerico<String> nodo = new NodoGenerico<>();
+c)Devuelve un elemento de tipo $T$ (el tipo con el que fue instanciada la lista) ubicado en la posición pos indicada por parámetro. Retorna null si la posición está fuera de rango. Es decir que si fue instanciado con "Estudiante", devuelte un elemento de tipo Estudiante, si fue instanciado con "String", devuelve un elemento de tipo String, y así sucesivamente. Esto permite que la misma clase pueda manejar diferentes tipos de datos sin necesidad de duplicar código para cada tipo Estudiante.
+d)public boolean agregar(T[] arreglo) {
+      if (arreglo == null) return false;
+      for (T elem : arreglo) {
+          if (!this.agregarFinal(elem)) {
+              return false; // Si falla la inserción de algún elemento, retorna false
+          }
+      }
+      return true; // Retorna true si todos los elementos fueron agregados con éxito
+  }
