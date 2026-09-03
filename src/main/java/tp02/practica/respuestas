@@ -1,0 +1,7 @@
+2.2)
+a) Recorridos preorden, inorden y posorden para recorrer los arboles en profundidad.
+b) Recorridos por niveles para recorrer los arboles en anchura.
+c) La diferencia entre los distintos recorridos en profundidad es el orden en el que se ejecuta la accion deseada (ya sea imprimir el dato del nodo, hacer calculos, etc).
+d) Los arboles generales no tienen ningun orden especifico, no hay reglas que cumplir al momento de agregar o eliminar nodos.
+e)Un árbol binario es un caso particular o subconjunto de los árboles generales donde el grado de cualquier nodo es menor o igual a 2 y, por ende, el grado del árbol es a lo sumo 2.
+En cambio el arbol general tiene como grado maximo de N >= 0.

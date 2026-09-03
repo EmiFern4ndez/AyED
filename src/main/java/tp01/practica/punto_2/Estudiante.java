@@ -1,4 +1,4 @@
-package punto_2;
+package tp01.practica.punto_2;
 
 public class Estudiante {
     String apellido;
