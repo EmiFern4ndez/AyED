@@ -1,4 +1,4 @@
-package tp01.practica.punto_2;
+package tp01.punto_2;
 
 public class Estudiante {
     String apellido;
@@ -11,7 +11,7 @@ public class Estudiante {
         this.legajo = legajo;
     }
 
-    public String misDatos(){
+    public String misDatos() {
         return "Apellido: " + apellido + "\n" + "Nombre: " + nombre + "\n" + "Legajo: " + legajo;
     }
 }

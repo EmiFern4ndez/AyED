@@ -1,4 +1,4 @@
-package tp01.practica.punto_1;
+package tp01.punto_1;
 
 import tp01.ejercicio1.ListaDeEnterosConArreglos;
 

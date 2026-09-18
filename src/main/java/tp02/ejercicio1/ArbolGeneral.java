@@ -2,26 +2,11 @@ package tp02.ejercicio1;
 
 import tp01.ejercicio2.ListaEnlazadaGenerica;
 import tp01.ejercicio2.ListaGenerica;
-import tp01.practica.punto_3.ColaGenerica;
+import tp01.punto_3.ColaGenerica;
 
 public class ArbolGeneral<T> {
     private T dato;
     private ListaGenerica<ArbolGeneral<T>> hijos = new ListaEnlazadaGenerica<ArbolGeneral<T>>();
-
-    public T getDato() {
-        return dato;
-    }
-
-    public void setDato(T dato) {
-        this.dato = dato;
-    }
-
-    public void setHijos(ListaGenerica<ArbolGeneral<T>> hijos) {
-        if (hijos == null)
-            this.hijos = new ListaEnlazadaGenerica<ArbolGeneral<T>>();
-        else
-            this.hijos = hijos;
-    }
 
     public ArbolGeneral(T dato) {
         this.dato = dato;
@@ -35,8 +20,23 @@ public class ArbolGeneral<T> {
             this.hijos = hijos;
     }
 
+    public T getDato() {
+        return dato;
+    }
+
+    public void setDato(T dato) {
+        this.dato = dato;
+    }
+
     public ListaGenerica<ArbolGeneral<T>> getHijos() {
         return this.hijos;
+    }
+
+    public void setHijos(ListaGenerica<ArbolGeneral<T>> hijos) {
+        if (hijos == null)
+            this.hijos = new ListaEnlazadaGenerica<ArbolGeneral<T>>();
+        else
+            this.hijos = hijos;
     }
 
     public void agregarHijo(ArbolGeneral<T> unHijo) {
@@ -147,10 +147,10 @@ public class ArbolGeneral<T> {
 
     public Integer altura() {
         int maxAlt = 0;
-        if (this.esVacio()){
+        if (this.esVacio()) {
             return -1;
         }
-        if (this.esHoja()){
+        if (this.esHoja()) {
             return maxAlt;
         }
         ListaGenerica<ArbolGeneral<T>> listaHijos = this.getHijos();
