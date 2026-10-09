@@ -12,16 +12,20 @@ public class MaxHeap<T extends Comparable<T>> implements ColaPrioridades<T> {
     }
 
     public MaxHeap(ListaGenerica<T> lista) {
-        // 1. Guardar la cantidad de elementos
+        // Guardar la cantidad de elementos
         this.cantidadElementos = lista.tamanio();
-        // 2. Inicializar el arreglo de datos (cast necesario en Java para genéricos)
+        // Inicializar el arreglo de datos (cast necesario en Java para genéricos)
         this.datos = (T[]) new Comparable[this.cantidadElementos];
-        // 3. Copiar todos los elementos de la lista al arreglo interno
+        // Copiar todos los elementos de la lista al arreglo interno
         lista.comenzar();
         int i = 0;
         while (!lista.fin()) {
             this.datos[i] = lista.proximo();
             i++;
+        }
+        // Acomodar los elementos para cumplir la propiedad de MaxHeap
+        for (int p = (this.cantidadElementos / 2) - 1; p >= 0; p--) {
+            this.percolate_down(p);
         }
     }
 
@@ -56,6 +60,9 @@ public class MaxHeap<T extends Comparable<T>> implements ColaPrioridades<T> {
 
     @Override
     public T tope() {
+        if (this.esVacia()) {
+            return null;
+        }
         return this.datos[0];
     }
 
