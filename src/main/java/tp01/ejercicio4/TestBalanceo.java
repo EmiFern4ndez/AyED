@@ -1,6 +1,6 @@
-package tp01.punto_4;
+package tp01.ejercicio4;
 
-import tp01.punto_3.PilaGenerica;
+import tp01.ejercicio3.PilaGenerica;
 
 public class TestBalanceo {
     public static boolean estaBalanceado(String s) {

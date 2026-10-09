@@ -1,6 +1,6 @@
 package tp03.ejercicio3;
 
-import tp01.punto_3.ColaGenerica;
+import tp01.ejercicio3.ColaGenerica;
 
 public class ArbolBinario<T> {
     private T dato;

@@ -1,6 +1,4 @@
-package tp01.punto_2;
-
-import tp01.ejercicio2.ListaEnlazadaGenerica;
+package tp01.ejercicio2;
 
 public class TestListaEnlazadaGenerica {
     public static void main(String[] args) {

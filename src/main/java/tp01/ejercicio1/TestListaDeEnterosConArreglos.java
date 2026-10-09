@@ -1,6 +1,4 @@
-package tp01.punto_1;
-
-import tp01.ejercicio1.ListaDeEnterosConArreglos;
+package tp01.ejercicio1;
 
 public class TestListaDeEnterosConArreglos {
     public static void main(String[] args) {

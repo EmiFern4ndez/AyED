@@ -1,4 +1,4 @@
-package tp01.punto_3;
+package tp01.ejercicio3;
 
 import tp01.ejercicio2.ListaEnlazadaGenerica;
 import tp01.ejercicio2.ListaGenerica;

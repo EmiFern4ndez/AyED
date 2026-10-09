@@ -1,0 +1,44 @@
+# Algoritmos BuildHeap y HeapSort
+
+---
+
+## 1. Algoritmo BuildHeap
+
+### ¿Para qué se utiliza?
+El objetivo principal de **BuildHeap** es convertir un arreglo desordenado de $n$ elementos en un árbol heap (ya sea Max-Heap o Min-Heap) válido de forma eficiente.
+
+En lugar de construir la heap insertando los elementos uno a uno desde cero (lo cual tomaría un tiempo de $\mathcal{O}(n \log n)$), **BuildHeap** aplica el procedimiento de "hundir" los elementos (*sift-down* o *heapify-down*) recorriendo los nodos internos de abajo hacia arriba. Esto permite que el árbol cumpla todas las propiedades de una heap en tiempo lineal:
+
+$$\text{Complejidad temporal de BuildHeap} = \mathcal{O}(n)$$
+
+---
+
+## 2. Algoritmo HeapSort
+
+### ¿Para qué se utiliza?
+**HeapSort** es un algoritmo de ordenamiento por comparación de tipo *in-place* (no requiere memoria adicional significativa) que utiliza una Max-Heap o Min-Heap para ordenar una secuencia de elementos en un tiempo garantizado de **$\mathcal{O}(n \log n)$** en todos los casos (peor, mejor y promedio).
+
+### ¿Cómo funciona paso a paso?
+1. **Construcción inicial:** Llama a `BuildHeap` para estructurar el arreglo desordenado como una **Max-Heap**. Al finalizar este paso, el elemento con el valor más grande del arreglo queda asegurado en la posición inicial (raíz del árbol).
+2. **Extracción e intercambio:** Intercambia el elemento de la raíz (el máximo actual) con el último elemento disponible en el área no ordenada del arreglo.
+3. **Reajuste:** Disminuye en $1$ el tamaño del heap activo y ejecuta *sift-down* sobre la nueva raíz para reestructurar la Max-Heap.
+4. **Iteración:** Repite el proceso de intercambio y reajuste hasta que toda la secuencia quede ordenada de menor a mayor.
+
+---
+
+## 3. Ejemplo práctico completo
+
+Dado el arreglo desordenado de 5 elementos:
+
+`[4, 10, 3, 5, 1]`
+
+### Paso A: Proceso de BuildHeap
+
+1. Calculamos el índice del último nodo que posee hijos: $\lfloor 5/2 \rfloor - 1 = 1$ (elemento `10`).
+2. **Evaluar índice 1 (`10`):** Sus hijos son `5` y `1`. Como $10 \ge 5$ y $10 \ge 1$, el subárbol está correcto.
+3. **Evaluar índice 0 (`4`):** Sus hijos son `10` y `3`.
+   * Como $10 > 4$, intercambiamos el `4` con el `10`.
+   * El arreglo queda: `[10, 4, 3, 5, 1]`.
+   * Al bajar el `4` a la posición 1, debemos revaluar sus nuevos hijos (`5` y `1`). Como $5 > 4$, intercambiamos el `4` con el `5`.
+
+**Resultado tras Build
