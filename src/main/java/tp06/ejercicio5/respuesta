@@ -1,0 +1,21 @@
+La opcion correcta es la C ya que:
+Empiezas en Q:
+    Marcas a Q como visitado y lo metes en la cola.
+    Cola actual: [Q]
+Desencolas Q:
+    Miras sus vecinos no visitados (M, N, P) y los encolas.
+    Cola actual: [M, N, P] (Aquí ya sabes que los siguientes deben ser M, N o P en algún orden).
+Desencolas M (El primero de la cola):
+    Miras los vecinos de M. Como Q y N ya están visitados, el único nuevo es R. Lo encolas al final.
+    Cola actual: [N, P, R]
+Desencolas N:
+    Miras los vecinos de N. El nuevo vecino sin visitar es O. Lo encolas al final.
+    Cola actual: [P, R, O]
+Desencolas P:
+    Sus vecinos ya están todos visitados.
+    Cola actual: [R, O]
+Desencolas R:
+    Sin nuevos vecinos.
+    Cola actual: [O]
+Desencolas O:
+    Fin del recorrido.
